@@ -1,0 +1,12 @@
+---
+interfaces:
+  sw-eos-01.ses.com:
+    - name: Ethernet1
+      description: "{{ ansible_net_model }} Managed by Ansible"
+    - name: Ethernet2
+      description: "{{ ansible_net_model }} Managed by Ansible"
+  sw-eos-02.ses.com:
+    - name: Ethernet1
+      description: "{{ ansible_net_model }} Managed by Ansible"
+    - name: Ethernet2
+      description: "{{ ansible_net_model }} Managed by Ansible"  

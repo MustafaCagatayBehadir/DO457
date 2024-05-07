@@ -1,0 +1,6 @@
+---
+snmp:
+  location: "Phuket"
+  communities:
+    - name: arista_snmp
+      ro: true

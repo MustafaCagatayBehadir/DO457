@@ -1,0 +1,16 @@
+---
+interfaces:
+  rtr-ios-01.ses.com:
+    - name: GigabitEthernet0/1
+      description: "{{ ansible_net_model }} Managed by Ansible"
+    - name: GigabitEthernet0/2
+      description: "{{ ansible_net_model }} Managed by Ansible"
+    - name: GigabitEthernet0/3
+      description: "{{ ansible_net_model }} Managed by Ansible"
+  rtr-ios-02.ses.com:
+    - name: GigabitEthernet0/1
+      description: "{{ ansible_net_model }} Managed by Ansible"
+    - name: GigabitEthernet0/2
+      description: "{{ ansible_net_model }} Managed by Ansible"
+    - name: GigabitEthernet0/3
+      description: "{{ ansible_net_model }} Managed by Ansible"

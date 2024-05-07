@@ -1,0 +1,7 @@
+---
+ansible_network_os: cisco.ios.ios
+ansible_connection: ansible.netcommon.network_cli
+ansible_user: mbehadir
+ansible_password: ex457
+ansible_become: true
+ansible_become_method: enable

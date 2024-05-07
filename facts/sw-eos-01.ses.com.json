@@ -1,0 +1,226 @@
+{
+    "net_all_ipv4_addresses": [
+        "192.168.233.152",
+        "10.0.21.2"
+    ],
+    "net_all_ipv6_addresses": [],
+    "net_api": "cliconf",
+    "net_config": "! Command: show running-config\n! device: sw-eos-01 (vEOS-lab, EOS-4.31.2F)\n!\n! boot system flash:/vEOS-lab.swi\n!\nno aaa root\n!\nusername mbehadir privilege 15 secret sha512 $6$9pSL.XHHqdLz//GU$Z6h/hovEBn6efwQKoCqmROEUV2BvA4vn5F00BYIB/5HMSyPRVbar/p7/GNp7HJrD0NBszF59J7sgs98xvjO5I0\n!\ntransceiver qsfp default-mode 4x10G\n!\nservice routing protocols model multi-agent\n!\nhostname sw-eos-01\ndns domain ses.com\n!\nspanning-tree mode mstp\n!\nsystem l1\n   unsupported speed action error\n   unsupported error-correction action error\n!\nbanner login\nAnsible managed device vEOS-lab.\nEOF\nbanner motd\nAnsible managed device vEOS-lab.\nEOF\n!\ninterface Ethernet1\n   description Configured Arita EOSv by Ansible\n!\ninterface Ethernet2\n   description to_rtr-ios-02\n   no switchport\n   ip address 10.0.21.2/30\n!\ninterface Ethernet3\n!\ninterface Management1\n   ip address 192.168.233.152/24\n!\nip routing\n!\nntp server 10.0.0.1\nntp server 10.0.0.2\nntp server 10.0.0.3\nntp server 10.0.0.4\n!\nend",
+    "net_filesystems": [
+        "file:",
+        "flash:",
+        "system:"
+    ],
+    "net_fqdn": "sw-eos-01.ses.com",
+    "net_gather_network_resources": [
+        "ospf_interfaces",
+        "lacp_interfaces",
+        "hostname",
+        "ospfv3",
+        "lldp_global",
+        "static_routes",
+        "l2_interfaces",
+        "vlans",
+        "bgp_global",
+        "l3_interfaces",
+        "interfaces",
+        "lldp_interfaces",
+        "snmp_server",
+        "ospfv2",
+        "bgp_address_family",
+        "acls",
+        "route_maps",
+        "logging_global",
+        "lacp",
+        "prefix_lists",
+        "acl_interfaces",
+        "ntp_global",
+        "lag_interfaces"
+    ],
+    "net_gather_subset": [
+        "config",
+        "interfaces",
+        "default",
+        "hardware"
+    ],
+    "net_hostname": "sw-eos-01",
+    "net_image": "flash:/vEOS-lab.swi",
+    "net_interfaces": {
+        "Ethernet1": {
+            "bandwidth": 1000000000,
+            "description": "Configured Arita EOSv by Ansible",
+            "duplex": "duplexFull",
+            "ipv4": {},
+            "lineprotocol": "up",
+            "macaddress": "50:00:00:01:00:01",
+            "mtu": 9214,
+            "operstatus": "connected",
+            "type": "bridged"
+        },
+        "Ethernet2": {
+            "bandwidth": 1000000000,
+            "description": "to_rtr-ios-02",
+            "duplex": "duplexFull",
+            "ipv4": {
+                "address": "10.0.21.2",
+                "masklen": 30
+            },
+            "lineprotocol": "up",
+            "macaddress": "50:00:00:d7:ee:0b",
+            "mtu": 1500,
+            "operstatus": "connected",
+            "type": "routed"
+        },
+        "Ethernet3": {
+            "bandwidth": 1000000000,
+            "description": "",
+            "duplex": "duplexFull",
+            "ipv4": {},
+            "lineprotocol": "up",
+            "macaddress": "50:00:00:01:00:03",
+            "mtu": 9214,
+            "operstatus": "connected",
+            "type": "bridged"
+        },
+        "Management1": {
+            "bandwidth": 1000000000,
+            "description": "",
+            "duplex": "duplexFull",
+            "ipv4": {
+                "address": "192.168.233.152",
+                "masklen": 24
+            },
+            "lineprotocol": "up",
+            "macaddress": "50:00:00:01:00:00",
+            "mtu": 1500,
+            "operstatus": "connected",
+            "type": "routed"
+        }
+    },
+    "net_memfree_mb": 1047.4921875,
+    "net_memtotal_mb": 1933.609375,
+    "net_model": "vEOS-lab",
+    "net_neighbors": {},
+    "net_python_version": "3.9.18",
+    "net_serialnum": "64A2999CC0EE5AC8F5525D8E2AEE8E10",
+    "net_system": "eos",
+    "net_version": "4.31.2F",
+    "network_resources": {
+        "acl_interfaces": [
+            {
+                "name": "Ethernet1"
+            },
+            {
+                "name": "Ethernet2"
+            },
+            {
+                "name": "Ethernet3"
+            },
+            {
+                "name": "Management1"
+            }
+        ],
+        "bgp_address_family": [],
+        "bgp_global": [],
+        "hostname": {
+            "hostname": "sw-eos-01"
+        },
+        "interfaces": [
+            {
+                "description": "Configured Arita EOSv by Ansible",
+                "enabled": true,
+                "name": "Ethernet1"
+            },
+            {
+                "description": "to_rtr-ios-02",
+                "enabled": true,
+                "mode": "layer3",
+                "name": "Ethernet2"
+            },
+            {
+                "enabled": true,
+                "name": "Ethernet3"
+            },
+            {
+                "enabled": true,
+                "name": "Management1"
+            }
+        ],
+        "l2_interfaces": [
+            {
+                "name": "Ethernet1"
+            },
+            {
+                "name": "Ethernet2"
+            },
+            {
+                "name": "Ethernet3"
+            },
+            {
+                "name": "Management1"
+            }
+        ],
+        "l3_interfaces": [
+            {
+                "name": "Ethernet1"
+            },
+            {
+                "ipv4": [
+                    {
+                        "address": "10.0.21.2/30"
+                    }
+                ],
+                "name": "Ethernet2"
+            },
+            {
+                "name": "Ethernet3"
+            },
+            {
+                "ipv4": [
+                    {
+                        "address": "192.168.233.152/24"
+                    }
+                ],
+                "name": "Management1"
+            }
+        ],
+        "lacp": {},
+        "lag_interfaces": [],
+        "lldp_global": {},
+        "logging_global": {},
+        "ntp_global": {
+            "servers": [
+                {
+                    "server": "10.0.0.1"
+                },
+                {
+                    "server": "10.0.0.2"
+                },
+                {
+                    "server": "10.0.0.3"
+                },
+                {
+                    "server": "10.0.0.4"
+                }
+            ]
+        },
+        "ospf_interfaces": [
+            {
+                "name": "Ethernet1"
+            },
+            {
+                "name": "Ethernet2"
+            },
+            {
+                "name": "Ethernet3"
+            },
+            {
+                "name": "Management1"
+            }
+        ],
+        "ospfv2": {},
+        "ospfv3": [],
+        "prefix_lists": [],
+        "snmp_server": {}
+    }
+}

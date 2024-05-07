@@ -1,0 +1,29 @@
+---
+- name: Configure The Message of The Day
+  hosts:
+    - eos
+    - ios
+    - vyos
+  
+  tasks:
+
+    - name: Configure IOS motd banner
+      when: ansible_network_os == 'cisco.ios.ios'
+      cisco.ios.ios_banner:
+        banner: motd
+        text: "Ansible managed device {{ ansible_facts['net_model'] }}"
+        state: present
+
+    - name: Configure EOS motd banner
+      when: ansible_network_os == 'arista.eos.eos'
+      arista.eos.eos_banner:
+        banner: motd
+        text: "Ansible managed device {{ ansible_facts['net_model'] }}"
+        state: present
+
+    - name: Configure VyOS pre-login banner
+      when: ansible_network_os == 'vyos.vyos.vyos'
+      vyos.vyos.vyos_banner:
+        banner: pre-login
+        text: "Ansible managed device {{ ansible_facts['net_model'] }}"
+        state: present

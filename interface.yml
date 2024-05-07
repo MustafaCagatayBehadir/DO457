@@ -1,0 +1,33 @@
+---
+- name: Configure Device Interface Descriptions
+  hosts:
+    - eos
+    - ios
+  gather_facts: true
+
+  tasks:
+
+    - name: Configure IOS interfaces
+      when: ansible_network_os == 'cisco.ios.ios'
+      loop: "{{ interfaces[inventory_hostname] }}"
+      cisco.ios.ios_interfaces:
+        config:
+          - name: "{{ item['name'] }}"
+            description: "{{ item['description'] }}"
+
+    - name: Configure EOS interfaces
+      when: ansible_network_os == 'arista.eos.eos'
+      loop: "{{ interfaces[inventory_hostname] }}"
+      arista.eos.eos_interfaces:
+        config:
+          - name: "{{ item['name'] }}"
+            description: "{{ item['description'] }}"
+
+    - name: Verify interface descriptions
+      register: result
+      ansible.netcommon.cli_command:
+        command: "{{ show_interfaces }}"
+
+    - name: Show interface descriptions
+      ansible.builtin.debug:
+        var: result['stdout_lines']

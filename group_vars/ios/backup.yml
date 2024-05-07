@@ -1,0 +1,4 @@
+---
+backups_tmp: /tmp
+backups_store: /home/mbehadir/backups
+delegate_host: aap.ses.com

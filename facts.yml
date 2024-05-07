@@ -1,0 +1,26 @@
+---
+- name: Gather Facts
+  hosts:
+    - eos
+  gather_facts: false
+
+  tasks:
+
+    - name: Gather EOS facts
+      when: ansible_network_os == 'arista.eos.eos'
+      arista.eos.eos_facts:
+        gather_subset: all
+        gather_network_resources: all
+
+    - name: Ensure facts directory exists
+      run_once: true
+      ansible.builtin.file:
+        state: directory
+        name: facts
+        mode: "0664"
+
+    - name: Save ansible_facts
+      ansible.builtin.copy:
+        content: "{{ ansible_facts | to_nice_json }}"
+        dest: ./facts/{{ inventory_hostname }}.json
+        mode: "0664"

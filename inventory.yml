@@ -1,0 +1,17 @@
+---
+all:
+  children:
+    ios:
+      hosts:
+        rtr-ios-01.ses.com: {}
+        rtr-ios-02.ses.com: {}
+    eos:
+      hosts:
+        sw-eos-01.ses.com: {}
+        sw-eos-02.ses.com: {}
+    vyos:
+      hosts:
+        rtr-vyos-01.ses.com: {}
+ungrouped:
+  hosts:
+    aap.ses.com: {}

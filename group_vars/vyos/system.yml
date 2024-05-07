@@ -1,0 +1,6 @@
+---
+snmp:
+  location: "Phuket"
+  communities:
+    - name: vyos_snmp
+      authorization_type: "ro"

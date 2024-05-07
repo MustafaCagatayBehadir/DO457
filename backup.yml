@@ -1,0 +1,30 @@
+---
+- name: Gather and Save Device Configuration Backups
+  hosts: ios
+  gather_facts: false
+
+  tasks:
+
+    - name: Gather IOS configuration backups
+      cisco.ios.ios_config:
+        backup: true
+        backup_options:
+          filename: "{{ inventory_hostname }}.txt"
+          dir_path: "{{ backups_tmp }}"
+
+    - name: Ensure that /home/mbehadir/backups exists
+      run_once: true
+      become: true
+      delegate_to: "{{ delegate_host }}"
+      ansible.builtin.file:
+        state: directory
+        name: "{{ backups_store }}"
+        recurse: true
+        mode: "0664"
+
+    - name: Copy backup configuration file from /tmp to /home/mbehadir/backups
+      become: true
+      delegate_to: "{{ delegate_host }}"
+      ansible.builtin.copy:
+        src: "{{ backups_tmp }}/{{ inventory_hostname }}.txt"
+        dest: "{{ backups_store }}"

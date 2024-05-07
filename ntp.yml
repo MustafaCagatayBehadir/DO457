@@ -1,0 +1,30 @@
+---
+- name: Remove Rogue NTP Server Configuration
+  hosts:
+    - ios
+    - eos
+  gather_facts: false
+
+  tasks:
+
+    - name: Remove IOS rogue ntp configuration
+      when: ansible_network_os == 'cisco.ios.ios'
+      cisco.ios.ios_ntp_global:
+        config:
+          servers:
+            - server: "{{ ntp_servers[0] }}"
+              version: 2
+            - server: "{{ ntp_servers[1] }}"
+              version: 2
+        state: overridden
+
+    - name: Remove EOS rogue ntp configuration
+      when: ansible_network_os == 'arista.eos.eos'
+      arista.eos.eos_ntp_global:
+        config:
+          servers:
+            - server: "{{ ntp_servers[0] }}"
+              version: 2
+            - server: "{{ ntp_servers[1] }}"
+              version: 2
+        state: overridden

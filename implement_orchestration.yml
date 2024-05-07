@@ -1,0 +1,35 @@
+---
+- name: Configure System Information
+  hosts:
+    - ios
+    - eos
+    - vyos
+  gather_facts: false
+
+  tasks:
+
+    - name: Configure IOS snmp and dns
+      when: ansible_network_os == 'cisco.ios.ios'
+      block:
+        
+        - name: Configure IOS snmp
+          cisco.ios.ios_snmp_server:
+            config: "{{ snmp }}"
+        
+        - name: Configure IOS dns
+          cisco.ios.ios_system:
+            name_servers:  "{{ nameservers }}"
+
+    - name: Configure EOS snmp
+      when: ansible_network_os == 'arista.eos.eos'
+      block:
+        - name: Configure EOS snmp
+          arista.eos.eos_snmp_server:
+            config: "{{ snmp }}"
+
+    - name: Configure VyOS snmp
+      when: ansible_network_os == 'vyos.vyos.vyos'
+      block:
+        - name: Configure VyOS snmp
+          vyos.vyos.vyos_snmp_server:
+            config: "{{ snmp }}"
